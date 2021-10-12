@@ -1,0 +1,9 @@
+name: mri
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3
+  - dcm2niix
+  - dcm2bids
+  - doit

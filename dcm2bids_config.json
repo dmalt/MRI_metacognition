@@ -1,0 +1,40 @@
+{
+    "descriptions": [
+        {
+        "dataType": "anat",
+        "modalityLabel": "T1w",
+        "criteria": {
+            "SeriesDescription": "3D Sag T1 CUBE"
+            }
+        },
+        {
+        "dataType": "anat",
+        "modalityLabel": "T1w",
+        "criteria": {
+            "SeriesDescription": "sT1W_3D_TFE"
+            }
+        },
+        {
+        "dataType": "anat",
+        "modalityLabel": "T1w",
+        "criteria": {
+            "SeriesDescription": "3D SAG FSPGR"
+            }
+        },
+        {
+        "dataType": "anat",
+        "modalityLabel": "T1w",
+        "criteria": {
+            "SeriesDescription": "sT1W_3D_ISO"
+            }
+        },
+        {
+        "dataType": "anat",
+        "modalityLabel": "T1w",
+        "criteria": {
+            "SeriesDescription": "t1_mpr_ns_sag_p2_iso",
+            "SeriesNumber": 15
+            }
+        }
+    ]
+}
