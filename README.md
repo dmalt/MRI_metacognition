@@ -1,13 +1,21 @@
-Convert ../../sourcedata to BIDS format. Convert DICOM to NIFTI on the way.
+Convert anatomy archives to BIDS format. Convert DICOM to NIFTI on the way.
 
 Requirements
 ------------
 - unix shell (cp, rm commands + possibility to install unzip and unrar)
 - anaconda\miniconda python installation
 
-Installation
-------------
+Installation and setup
+----------------------
+0. Create the following folders structure:
+In the project's root create two folders named `sourcedata` and `rawdata`.
+Change currendt directory to `rawdata` and clone this repository with
+```bash
+git clone https://github.com/dmalt/MRI_metacognition.git code
+```
+
 1. Create and activate conda environment
+Under the `code` folder run
 ```bash
 conda env create -f environment.yml
 conda activate mri
@@ -31,8 +39,8 @@ doit convert
 ```
 
 Check `../sub-<subject_id>/anat` folder for the newly added subject. It should have 2 files:
-`sub-<subject_id>_T1w.json` and `sub-<subject_id>_T1w.nii.gz`. If these two files are present,
-run the whole pipeline again to clean the temporary folders:
+`sub-<subject_id>_T1w.json` and `sub-<subject_id>_T1w.nii.gz`. If these two files are present, it's all good.
+Run the whole pipeline again to clean the temporary folders:
 
 ```bash
 doit
