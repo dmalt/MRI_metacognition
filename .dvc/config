@@ -1,4 +1,7 @@
 [core]
     remote = gdrive_remote
+[cache]
+    type = "hardlink,symlink"
+    protected = true
 ['remote "gdrive_remote"']
     url = gdrive://1j3AcbT8TkY64_i3-qOlwkoZGNjl6R2nu
