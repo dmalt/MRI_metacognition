@@ -2,6 +2,8 @@ from doit.tools import run_once
 
 from config import src_dir, subjects, tmp_dicom_dir
 
+DOIT_CONFIG = {"sort": "definition"}
+
 
 def task_unarchive():
     """Unarchive MRI data"""
@@ -9,16 +11,17 @@ def task_unarchive():
         data_dir = src_dir / f"sub-{s}" / "anat"
         path = next(data_dir.iterdir())
         dst_dir = tmp_dicom_dir / f"sub-{s}"
-        dst_dir.mkdir(exist_ok=True, parents=True)
+        # dst_dir.mkdir(exist_ok=True, parents=True)
         targ = dict(
             name=s,
             targets=[dst_dir],
             uptodate=[run_once],
         )
+        targ["actions"] = [f"mkdir -p {dst_dir}"]
         if path.name.endswith(".zip"):
-            targ["actions"] = [f"unzip {path} -d {dst_dir}"]
+            targ["actions"].append(f"unzip {path} -d {dst_dir}")
         elif path.name.endswith(".rar"):
-            targ["actions"] = [f"unrar x {path} {dst_dir}"]
+            targ["actions"].append(f"unrar x {path} {dst_dir}")
         yield targ
 
 
@@ -81,6 +84,7 @@ def create_participants_tsv():
 
 
 def task_create_participants_tsv():
+    """Create tsv with participants subject id to name mapping"""
     return dict(
         actions=[create_participants_tsv],
         targets=["../participants.tsv"],
