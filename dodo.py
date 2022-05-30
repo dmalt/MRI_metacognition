@@ -1,5 +1,6 @@
-from config import subjects, src_dir, tmp_dicom_dir
 from doit.tools import run_once
+
+from config import src_dir, subjects, tmp_dicom_dir
 
 
 def task_unarchive():
@@ -29,10 +30,7 @@ def task_convert():
                 name=s,
                 actions=[
                     f"mkdir -p ../sub-{s}/anat",
-                    (
-                        f"cp {tmp_dicom_dir}/sub-{s}/*/*.nii.gz"
-                        f" ../sub-{s}/anat/sub-{s}_T1w.nii.gz"
-                    ),
+                    f"cp {tmp_dicom_dir}/sub-{s}/*/*.nii.gz ../sub-{s}/anat/sub-{s}_T1w.nii.gz",
                 ],
                 targets=[f"../sub-{s}"],
                 uptodate=[run_once],
@@ -79,12 +77,7 @@ def create_participants_tsv():
         for s in subjects:
             data_dir = src_dir / f"sub-{s}" / "anat"
             surname, name = next(data_dir.iterdir()).stem.split("_")
-            f.write(
-                "\t".join(
-                    [f"sub-{s}", name.capitalize(), surname.capitalize()]
-                )
-                + "\n"
-            )
+            f.write("\t".join([f"sub-{s}", name.capitalize(), surname.capitalize()]) + "\n")
 
 
 def task_create_participants_tsv():
