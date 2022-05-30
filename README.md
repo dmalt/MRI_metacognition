@@ -7,13 +7,14 @@ Requirements
 
 Installation and setup
 ----------------------
-0. Create the following folders structure:
+0. Create the folders structure.
 
 In the project's root create two folders named `sourcedata` and `rawdata`.
-Change currendt directory to `rawdata` and clone this repository with
+Change current directory to `rawdata` and clone this repository with
 ```bash
 git clone https://github.com/dmalt/MRI_metacognition.git code
 ```
+
 
 1. Create and activate conda environment
 Under the `code` folder run
