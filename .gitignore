@@ -1,6 +1,5 @@
 __pycache__
 .doit*
-/sourcedata/sub-*
 /rawdata/sub-*
 /rawdata/derivatives/fsf/sub-*
 /rawdata/participants.tsv
