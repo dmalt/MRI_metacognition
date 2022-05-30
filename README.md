@@ -8,6 +8,7 @@ Requirements
 Installation and setup
 ----------------------
 0. Create the following folders structure:
+
 In the project's root create two folders named `sourcedata` and `rawdata`.
 Change currendt directory to `rawdata` and clone this repository with
 ```bash
