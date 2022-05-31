@@ -94,8 +94,19 @@ Use this field to append a section with a new selection rule to the `dcm2bids_co
 
 `dcm2bids` will use this new rule to select a proper series by its description.
 
-Usually "criteria" based only on "SeriesDescription" is enough, but in case several files
-are selected you'll need to experiment with a more strict criteria. For that, refer to
-the `dcm2bids` [documentation](https://unfmontreal.github.io/Dcm2Bids/docs/how-to/create-config-file/)
+Usually "criteria" based only on "SeriesDescription" is enough, but in case
+several files are selected you'll need to experiment with a more strict
+criteria. For that, refer to the `dcm2bids`
+[documentation](https://unfmontreal.github.io/Dcm2Bids/docs/how-to/create-config-file/)
 
+**The second possibility** is that folders structure or data format inside the subject's
+archive doesn't match that of other subjects. In this case such subject requires special
+treatment.
+
+To process this subject, open dodo.py and add an `if`-clause to `tast_convert` in analogy
+to other corner-case subjects. To figure out an appropriate `action`, look at the unarchived
+subject's files under `rawdata/tmp_dicom`. Normally, this temporary folder is automatically
+deleted after the conversion, but when something goes wrong and the pipeline doesn't finish,
+it should be present. Another option would be to manually unarchive the subject in some temp
+directory to check the folders structure.
 
