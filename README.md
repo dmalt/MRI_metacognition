@@ -64,7 +64,12 @@ conda env create -f environment.yml
 
 Launch
 ------
-To run the sourcedata-BIDS conversion pipeline, go to `rawdata/code` and run
+1. Get the data with
+```bash
+dvc pull
+```
+
+2. Run the sourcedata-BIDS conversion pipeline, go to `rawdata/code` and run
 ```bash
 doit
 ```
