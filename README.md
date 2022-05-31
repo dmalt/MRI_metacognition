@@ -70,18 +70,18 @@ Requirements
 Launch
 ------
 1. Get the data with
-```bash
-dvc pull
-```
+    ```bash
+    dvc pull
+    ```
 
-**Disclaimer**
-> The underlying GDrive data folder must be shared with you.
-> Otherwise you won't be able to download the data
+    **Disclaimer**
+    > The underlying GDrive data folder must be shared with you.
+    > Otherwise you won't be able to download the data
 
 2. Run the sourcedata-BIDS conversion pipeline, go to `rawdata/code` and run
-```bash
-doit
-```
+    ```bash
+    doit
+    ```
 
 Adding new subjects
 -------------------
