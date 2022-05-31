@@ -22,7 +22,7 @@ conda activate mri
 Folders structure
 -----------------
 
-- `sourcedata`
+- `sourcedata`\
     Orignially collected MRI images in different formats packaged in zip and rar archives
 - `sourcedata/code`
     Code used to organize sourcedata into folders. Inputs for this code are not provided and it
