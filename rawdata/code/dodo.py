@@ -28,42 +28,37 @@ def task_unarchive():
 def task_convert():
     """Convert to NIFTI format and copy to BIDS folders structure"""
     for s in subjects:
-        if s == "38":
-            yield dict(
-                name=s,
-                actions=[
-                    f"mkdir -p ../sub-{s}/anat",
-                    f"cp {tmp_dicom_dir}/sub-{s}/*/*.nii.gz ../sub-{s}/anat/sub-{s}_T1w.nii.gz",
-                ],
-                targets=[f"../sub-{s}"],
-                uptodate=[run_once],
-            )
-            continue
-        elif s == "23":
-            yield dict(
-                name=s,
-                actions=[
-                    (
-                        "dcm2bids -d"
-                        f" {tmp_dicom_dir}/sub-{s}/Larionov/3D_DICOM -c"
-                        f" ./dcm2bids_config.json -p {s} -o ../"
-                    )
-                ],
-                targets=[f"../sub-{s}"],
-                uptodate=[run_once],
-            )
-            continue
-        yield dict(
+        task_dict = dict(
             name=s,
-            actions=[
+            targets=[
+                f"../sub-{s}/anat/sub-{s}_T1w.nii.gz",
+                f"../sub-{s}/anat/sub-{s}_T1w.json",
+                f"../sub-{s}/anat",
+                f"../sub-{s}",
+            ],
+            uptodate=[run_once],
+            clean=True,
+        )
+        if s == "38":
+            task_dict["actions"] = [
+                f"mkdir -p ../sub-{s}/anat",
+                f"cp {tmp_dicom_dir}/sub-{s}/*/*.nii.gz ../sub-{s}/anat/sub-{s}_T1w.nii.gz",
+            ]
+        elif s == "23":
+            task_dict["actions"] = [
+                (
+                    f"dcm2bids -d {tmp_dicom_dir}/sub-{s}/Larionov/3D_DICOM"
+                    + f" -c ./dcm2bids_config.json -p {s} -o ../"
+                )
+            ]
+        else:
+            task_dict["actions"] = [
                 (
                     f"dcm2bids -d {tmp_dicom_dir}/sub-{s} -c"
                     f" ./dcm2bids_config.json -p {s} -o ../"
                 )
-            ],
-            targets=[f"../sub-{s}"],
-            uptodate=[run_once],
-        )
+            ]
+        yield task_dict
 
 
 def task_clean_tmp_folders():
