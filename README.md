@@ -1,9 +1,37 @@
-Convert anatomy archives to BIDS format. Convert DICOM to NIFTI on the way.
+A complete anatomies processing path from MRI images archive to MNE-Python source-reconstruction-ready
+freesurfer cortical reconstruction.
+
+The pipeline uses [DVC](https://dvc.org/) to store the files, [doit](https://pydoit.org/) to
+automate the processing steps and a custom [docker](https://www.docker.com/) mage for
+freesurfer-dependent operations. Folders structure is inspired by, but doesn't follow strictly, the
+[BIDS](https://bids.neuroimaging.io/) format
+
+Overview
+--------
+
+- `sourcedata`\
+    Orignially collected MRI images in different formats packaged in zip and rar archives
+- `sourcedata/code`\
+    Code used to organize sourcedata into folders. Inputs for this code are not provided and it
+    exists only for reference
+- `rawdata`\
+    MRI images converted to NIFTI and stored as [BIDS](https://bids.neuroimaging.io/)-like dataset.
+    We don't provide the actual data files since they can be recovered with a pipeline in `rawdata/code`
+- `rawdata/code`\
+    Code used to convert sourcedata to BIDS format
+- `rawdata/derivatives`\
+    Derivative datasets for rawdata
+- `rawdata/derivatives/fsf`\
+    Freesurfer reconstruction pipeline
+- `rawdata/derivatives/fsf/code`\
+    Code for freesurfer reconstruction
+
 
 Requirements
 ------------
 - unix shell (cp, rm commands + possibility to install unzip and unrar)
 - anaconda\miniconda python installation
+- docker for freesurfer cortical reconstruction
 
 0. Download the code and change working directory to its root folder
 
@@ -33,26 +61,6 @@ conda env create -f environment.yml
 
 
 2. Install unzip, unrar and docker
-
-Folders structure
------------------
-
-- `sourcedata`\
-    Orignially collected MRI images in different formats packaged in zip and rar archives
-- `sourcedata/code`\
-    Code used to organize sourcedata into folders. Inputs for this code are not provided and it
-    exists only for reference
-- `rawdata`\
-    MRI images converted to NIFTI and stored as [BIDS](https://bids.neuroimaging.io/)-like dataset.
-    We don't provide the actual data files since they can be recovered with a pipeline in `rawdata/code`
-- `rawdata/code`\
-    Code used to convert sourcedata to BIDS format
-- `rawdata/derivatives`\
-    Derivative datasets for rawdata
-- `rawdata/derivatives/fsf`\
-    Freesurfer reconstruction pipeline
-- `rawdata/derivatives/fsf/code`\
-    Code for freesurfer reconstruction
 
 Launch
 ------
