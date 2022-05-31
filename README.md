@@ -78,7 +78,7 @@ Launch
     > The underlying GDrive data folder must be shared with you.
     > Otherwise you won't be able to download the data
 
-2. Run the sourcedata-BIDS conversion pipeline, go to `rawdata/code` and run
+2. Run the sourcedata-BIDS conversion pipeline from `rawdata/code`:
     ```bash
     doit
     ```
