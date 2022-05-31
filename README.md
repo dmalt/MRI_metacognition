@@ -33,8 +33,11 @@ Folders structure
 - `rawdata/code`\
     Code used to convert sourcedata to BIDS format
 - `rawdata/derivatives`\
+    Derivative datasets for rawdata
 - `rawdata/derivatives/fsf`\
+    Freesurfer reconstruction pipeline
 - `rawdata/derivatives/fsf/code`\
+    Code for freesurfer reconstruction
 
 Launch
 ------
@@ -62,10 +65,9 @@ doit
 
 ### In case the folder is empty
 
-#### The first possibility
-is that series description of the new image differs from the images of already
-added subjects. This is normal if the MRI was aquired in a different setup or
-hospital than those for other subjects.
+**The first possibility** is that series description of the new image differs
+from the images of already added subjects. This is normal if the MRI was
+aquired in a different setup or hospital than those for other subjects.
 
 Series descriptions are selected manually and stored at `dcm2bids_config.json`.
 To update it, first check `../tmp_dcm2bids/sub-<subject_id>` folder. It should
