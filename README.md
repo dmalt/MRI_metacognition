@@ -1,4 +1,4 @@
-A complete anatomies processing path from MRI images archive to MNE-Python source-reconstruction-ready
+A complete anatomies processing path from MRI images archive to source-analyses-ready
 freesurfer cortical reconstruction.
 
 The pipeline uses [DVC](https://dvc.org/) to store the files, [doit](https://pydoit.org/) to
