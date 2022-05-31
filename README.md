@@ -35,7 +35,7 @@ This repo's folders structure is as follows:
 
 Requirements
 ------------
-- unix shell (cp, rm commands + possibility to install unzip and unrar)
+- unix shell (cp, rm commands + possibility to install  unrar)
 - anaconda\miniconda python installation
 - docker for freesurfer cortical reconstruction
 
@@ -66,7 +66,11 @@ Requirements
     conda env create -f environment.yml
     ```
 
-3. Install unzip, unrar and docker
+3. Install unrar and docker
+
+    On Windows `unrar` installation might be problematic.
+    There might be an option with pip/conda. In case `unrar` can't be installad,
+    we recommend to unpack `.rar` archives and re-compress them as `.zip`
 
 Launch
 ------

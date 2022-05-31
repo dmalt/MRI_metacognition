@@ -9,7 +9,7 @@ dependencies:
   - ca-certificates=2022.4.26=h06a4308_0
   - certifi=2022.5.18.1=py310h06a4308_0
   - cloudpickle=2.0.0=pyhd3eb1b0_0
-  - dcm2bids=2.1.6=pyhd8ed1ab_0
+  - dcm2bids=2.1.7=pyhd8ed1ab_0
   - dcm2niix=1.0.20211006=h4bd325d_0
   - doit=0.33.1=py310h06a4308_0
   - future=0.18.2=py310h06a4308_1
@@ -29,6 +29,7 @@ dependencies:
   - sqlite=3.38.3=hc218d9a_0
   - tk=8.6.11=h1ccaba5_1
   - tzdata=2022a=hda174b7_0
+  - unzip=6.0=h611a1e1_0
   - wheel=0.37.1=pyhd3eb1b0_0
   - xz=5.2.5=h7f8727e_1
   - zlib=1.2.12=h7f8727e_2
@@ -119,3 +120,4 @@ dependencies:
     - xmltodict==0.13.0
     - yarl==1.7.2
     - zc-lockfile==2.0
+prefix: /home/altukhov/miniconda3/envs/mri
