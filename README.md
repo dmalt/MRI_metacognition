@@ -78,8 +78,8 @@ dvc pull
 doit
 ```
 
-Adding new subject
-------------------
+Adding new subjects
+-------------------
 To add a new subject, place the anatomy archive to `../../sourcedata/sub-<subject_id>/anat`
 and run the first two pipeline steps:
 ```bash
