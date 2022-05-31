@@ -24,17 +24,17 @@ Folders structure
 
 - `sourcedata`\
     Orignially collected MRI images in different formats packaged in zip and rar archives
-- `sourcedata/code`
+- `sourcedata/code`\
     Code used to organize sourcedata into folders. Inputs for this code are not provided and it
     exists only for reference
-- `rawdata`
+- `rawdata`\
     MRI images converted to NIFTI and stored as [BIDS](https://bids.neuroimaging.io/)-like dataset.
     We don't provide the actual data files since they can be recovered with a pipeline in `rawdata/code`
-- `rawdata/code`
+- `rawdata/code`\
     Code used to convert sourcedata to BIDS format
-- `rawdata/derivatives`
-- `rawdata/derivatives/fsf`
-- `rawdata/derivatives/fsf/code`
+- `rawdata/derivatives`\
+- `rawdata/derivatives/fsf`\
+- `rawdata/derivatives/fsf/code`\
 
 Launch
 ------
