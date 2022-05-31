@@ -13,10 +13,25 @@ cd MRI_metacognition
 ```
 
 1. Create and activate conda environment
+
+**On Linux** the complete environment snapshot should work:
+```bash
+conda env create -f environment_freeze.yml
+```
+Alternatively,
 ```bash
 conda env create -f environment.yml
-conda activate mri
 ```
+can be used. It will install the latest package versions, but in this case something
+might break due to backward incompatibility.
+
+**On Windows** it's better to use the second option, which specifes only the primary dependencies and lets
+`conda` resolve the rest, since the secondary dependencies might be different between platforms.
+```bash
+conda env create -f environment.yml
+```
+
+
 2. Install unzip, unrar and docker
 
 Folders structure
