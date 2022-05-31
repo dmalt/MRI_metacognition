@@ -48,7 +48,8 @@ Requirements
 
 2. Create and activate conda environment
 
-    **On Linux** the complete environment snapshot should work:
+    **On Linux** we recommend to install the complete environment snapshot with
+    fixed package versions:
     ```bash
     conda env create -f environment_freeze.yml
     ```
