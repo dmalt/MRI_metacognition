@@ -2,7 +2,7 @@ A complete anatomies processing path from MRI images archive to source-analyses-
 freesurfer cortical reconstruction.
 
 The pipeline uses [DVC](https://dvc.org/) to store the files, [doit](https://pydoit.org/) to
-automate the processing steps and a custom [docker](https://www.docker.com/) mage for
+automate the processing steps and a custom [docker](https://www.docker.com/) image for
 freesurfer-dependent operations. Folders structure is inspired by, but doesn't follow strictly, the
 [BIDS](https://bids.neuroimaging.io/) format.
 
