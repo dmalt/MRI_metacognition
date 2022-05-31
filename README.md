@@ -39,34 +39,33 @@ Requirements
 - anaconda\miniconda python installation
 - docker for freesurfer cortical reconstruction
 
-0. Download the code and change working directory to its root folder
+1. Download the code and change working directory to its root folder
 
-```bash
-git clone https://github.com/dmalt/MRI_metacognition.git
-cd MRI_metacognition
-```
+    ```bash
+    git clone https://github.com/dmalt/MRI_metacognition.git
+    cd MRI_metacognition
+    ```
 
-1. Create and activate conda environment
+2. Create and activate conda environment
 
-**On Linux** the complete environment snapshot should work:
-```bash
-conda env create -f environment_freeze.yml
-```
-Alternatively,
-```bash
-conda env create -f environment.yml
-```
-can be used. It will install the latest package versions, but in this case something
-might break due to backward incompatibility.
+    **On Linux** the complete environment snapshot should work:
+    ```bash
+    conda env create -f environment_freeze.yml
+    ```
+    Alternatively,
+    ```bash
+    conda env create -f environment.yml
+    ```
+    can be used. It will install the latest package versions, but in this case something
+    might break due to backward incompatibility.
 
-**On Windows** it's better to use the second option, which specifes only the primary dependencies and lets
-`conda` resolve the rest, since the secondary dependencies might be different between platforms.
-```bash
-conda env create -f environment.yml
-```
+    **On Windows** it's better to use the second option, which specifes only the primary dependencies and lets
+    `conda` resolve the rest, since the secondary dependencies might be different between platforms.
+    ```bash
+    conda env create -f environment.yml
+    ```
 
-
-2. Install unzip, unrar and docker
+3. Install unzip, unrar and docker
 
 Launch
 ------
