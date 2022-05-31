@@ -4,10 +4,16 @@ freesurfer cortical reconstruction.
 The pipeline uses [DVC](https://dvc.org/) to store the files, [doit](https://pydoit.org/) to
 automate the processing steps and a custom [docker](https://www.docker.com/) mage for
 freesurfer-dependent operations. Folders structure is inspired by, but doesn't follow strictly, the
-[BIDS](https://bids.neuroimaging.io/) format
+[BIDS](https://bids.neuroimaging.io/) format.
 
 Overview
 --------
+The pipeline provides a general way to prepare MRI images for source analyses with MNE-Python.
+It transforms MRI image series in possibly different formats to the BIDS-friendly NIFTI, runs
+freesurfer's recon-all and computes additional bem surfaces needed for source analyses with
+MNE-Python freesurfer-dependent command-line tools.
+
+This repo's folders structure is as follows:
 
 - `sourcedata`\
     Orignially collected MRI images in different formats packaged in zip and rar archives
