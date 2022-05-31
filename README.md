@@ -5,28 +5,40 @@ Requirements
 - unix shell (cp, rm commands + possibility to install unzip and unrar)
 - anaconda\miniconda python installation
 
-Installation and setup
-----------------------
-0. Create the folders structure.
+0. Download the code and change working directory to its root folder
 
-In the project's root create two folders named `sourcedata` and `rawdata`.
-Change current directory to `rawdata` and clone this repository with
 ```bash
-git clone https://github.com/dmalt/MRI_metacognition.git code
+git clone https://github.com/dmalt/MRI_metacognition.git
+cd MRI_metacognition
 ```
 
-
 1. Create and activate conda environment
-Under the `code` folder run
 ```bash
 conda env create -f environment.yml
 conda activate mri
 ```
-2. Install unzip and unrar
+2. Install unzip, unrar and docker
+
+Folders structure
+-----------------
+
+- `sourcedata`
+    Orignially collected MRI images in different formats packaged in zip and rar archives
+- `sourcedata/code`
+    Code used to organize sourcedata into folders. Inputs for this code are not provided and it
+    exists only for reference
+- `rawdata`
+    MRI images converted to NIFTI and stored as [BIDS](https://bids.neuroimaging.io/)-like dataset.
+    We don't provide the actual data files since they can be recovered with a pipeline in `rawdata/code`
+- `rawdata/code`
+    Code used to convert sourcedata to BIDS format
+- `rawdata/derivatives`
+- `rawdata/derivatives/fsf`
+- `rawdata/derivatives/fsf/code`
 
 Launch
 ------
-To run the conversion pipeline, execute
+To run the sourcedata-BIDS conversion pipeline, go to `rawdata/code` and run
 ```bash
 doit
 ```
