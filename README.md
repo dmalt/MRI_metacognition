@@ -1,5 +1,5 @@
-A complete anatomies processing path from MRI images archive to source-analyses-ready
-freesurfer cortical reconstruction.
+A complete anatomies processing path from an MRI images archive to the
+source-analyses-ready freesurfer cortical reconstruction.
 
 The pipeline uses [DVC](https://dvc.org/) to store the files, [doit](https://pydoit.org/) to
 automate the processing steps and a custom [docker](https://www.docker.com/) image for
