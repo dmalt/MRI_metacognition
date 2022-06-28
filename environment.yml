@@ -1,14 +1,11 @@
 name: mri
 channels:
-  - defaults
   - conda-forge
 dependencies:
   - python=3
+  - dvc
+  - dvc-gdrive
   - dcm2niix
   - dcm2bids
-  - pip
   - doit
   - unzip
-  - pip:
-      - dvc[gdrive]
-      - dvc
