@@ -1,6 +1,5 @@
-from doit.tools import run_once
-
 from config import src_dir, subjects, tmp_dicom_dir
+from doit.tools import run_once
 
 DOIT_CONFIG = {"sort": "definition"}
 
@@ -53,10 +52,7 @@ def task_convert():
             ]
         else:
             task_dict["actions"] = [
-                (
-                    f"dcm2bids -d {tmp_dicom_dir}/sub-{s} -c"
-                    f" ./dcm2bids_config.json -p {s} -o ../"
-                )
+                f"dcm2bids -d {tmp_dicom_dir}/sub-{s} -c ./dcm2bids_config.json -p {s} -o ../"
             ]
         yield task_dict
 

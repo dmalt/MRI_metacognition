@@ -1,17 +1,19 @@
 A complete anatomies processing path from an MRI images archive to the
 source-analyses-ready freesurfer cortical reconstruction.
 
-The pipeline uses [DVC](https://dvc.org/) to store the files, [doit](https://pydoit.org/) to
-automate the processing steps and a custom [docker](https://www.docker.com/) image for
-freesurfer-dependent operations. Folders structure is inspired by, but doesn't follow strictly, the
+The pipeline uses [DVC](https://dvc.org/) to store the files,
+[doit](https://pydoit.org/) to automate the processing steps and a custom
+[docker](https://www.docker.com/) image for freesurfer-dependent operations.
+Folders structure is inspired by, but doesn't follow strictly, the
 [BIDS](https://bids.neuroimaging.io/) format.
 
 Overview
 --------
-The pipeline provides a general way to prepare MRI images for source analyses with MNE-Python.
-It transforms MRI image series in possibly different formats to the BIDS-friendly NIFTI, runs
-freesurfer's recon-all and computes additional bem surfaces needed for source analyses with
-MNE-Python freesurfer-dependent command-line tools.
+The pipeline provides a general way to prepare MRI images for source analyses
+with MNE-Python. It transforms MRI image series in possibly different formats
+to the BIDS-friendly NIFTI, runs freesurfer's recon-all and computes additional
+bem surfaces needed for source analyses with MNE-Python freesurfer-dependent
+command-line tools.
 
 This repo's folders structure is as follows:
 
@@ -21,8 +23,10 @@ This repo's folders structure is as follows:
     Code used to organize sourcedata into folders. Inputs for this code are not provided and it
     exists only for reference
 - `rawdata`\
-    MRI images converted to NIFTI and stored as [BIDS](https://bids.neuroimaging.io/)-like dataset.
-    We don't provide the actual data files since they can be recovered with a pipeline in `rawdata/code`
+    MRI images converted to NIFTI and stored as
+    [BIDS](https://bids.neuroimaging.io/)-like dataset. We don't provide the
+    actual data files since they can be recovered with a pipeline in
+    `rawdata/code`
 - `rawdata/code`\
     Code used to convert sourcedata to BIDS format
 - `rawdata/derivatives`\
@@ -57,11 +61,12 @@ Requirements
     ```bash
     conda env create -f environment.yml
     ```
-    can be used. It will install the latest package versions, but in this case something
-    might break due to backward incompatibility.
+    can be used. It will install the latest package versions, but in this case
+    something might break due to backward incompatibility.
 
-    **On Windows** it's better to use the second option, which specifes only the primary dependencies and lets
-    `conda` resolve the rest, since the secondary dependencies might be different between platforms.
+    **On Windows** it's better to use the second option, which specifes only
+    the primary dependencies and lets `conda` resolve the rest, since the
+    secondary dependencies might be different between platforms.
     ```bash
     conda env create -f environment.yml
     ```
@@ -97,9 +102,10 @@ doit unarchive
 doit convert
 ```
 
-Check `../sub-<subject_id>/anat` folder for the newly added subject. It should have 2 files:
-`sub-<subject_id>_T1w.json` and `sub-<subject_id>_T1w.nii.gz`. If these two files are present, it's all good.
-Run the whole pipeline again to clean the temporary folders:
+Check `../sub-<subject_id>/anat` folder for the newly added subject. It should
+have 2 files: `sub-<subject_id>_T1w.json` and `sub-<subject_id>_T1w.nii.gz`. If
+these two files are present, it's all good. Run the whole pipeline again to
+clean the temporary folders:
 
 ```bash
 doit
@@ -119,10 +125,12 @@ Here we need to find an actual MRI data. Among the available jsons select the
 value of `SeriesDescription` that matches an actual data file. Note, that for
 MRI acquisition there are usually several "support" image sequencies, e.g.
 lokalizers, which we don't need. One way to find the correct image is to open
-its `.nii.gz` file in one of the NIFTI viewers available [online](https://socr.umich.edu/HTML5/BrainViewer/).
+its `.nii.gz` file in one of the NIFTI viewers available
+[online](https://socr.umich.edu/HTML5/BrainViewer/).
 
-Once the correct series is found, open its `.json` file in a text editor and find the `SeriesDescription` field.
-Use this field to append a section with a new selection rule to the `dcm2bids_config.json` like this:
+Once the correct series is found, open its `.json` file in a text editor and
+find the `SeriesDescription` field. Use this field to append a section with a
+new selection rule to the `dcm2bids_config.json` like this:
 
 ```json
 {
@@ -141,14 +149,14 @@ several files are selected you'll need to experiment with a more strict
 criteria. For that, refer to the `dcm2bids`
 [documentation](https://unfmontreal.github.io/Dcm2Bids/docs/how-to/create-config-file/)
 
-**The second possibility** is that folders structure or data format inside the subject's
-archive doesn't match that of other subjects. In this case such subject requires special
-treatment.
+**The second possibility** is that folders structure or data format inside the
+subject's archive doesn't match that of other subjects. In this case such
+subject requires special treatment.
 
-To process this subject, open dodo.py and add an `if`-clause to `tast_convert` in analogy
-to other corner-case subjects. To figure out an appropriate `action`, look at the unarchived
-subject's files under `rawdata/tmp_dicom`. Normally, this temporary folder is automatically
-deleted after the conversion, but when something goes wrong and the pipeline doesn't finish,
-it should be present. Another option would be to manually unarchive the subject in some temp
+To process this subject, open dodo.py and add an `if`-clause to `tast_convert`
+in analogy to other corner-case subjects. To figure out an appropriate
+`action`, look at the unarchived subject's files under `rawdata/tmp_dicom`.
+Normally, this temporary folder is automatically deleted after the conversion,
+but when something goes wrong and the pipeline doesn't finish, it should be
+present. Another option would be to manually unarchive the subject in some temp
 directory to check the folders structure.
-
