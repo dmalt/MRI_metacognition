@@ -16,7 +16,7 @@ def unzip(archive_path, dst_dir):
 
 
 def unrar(archive_path, dst_dir):
-    patoolib.extract_archive(archive_path, outdir=dst_dir)
+    patoolib.extract_archive(str(archive_path), outdir=str(dst_dir), interactive=False)
 
 
 def mkdir(dirname):
