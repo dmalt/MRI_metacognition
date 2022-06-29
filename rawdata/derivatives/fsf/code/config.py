@@ -20,7 +20,13 @@ docker_image = "dmalt/freesurfer"
 docker_tag = "7.1.1"
 docker_url = "https://hub.docker.com/repository/docker/dmalt/freesurfer"
 docker_tagged_image = docker_image + ":" + docker_tag
-docker_base = f"docker run --rm -v {root}/:{docker_subj_dir} -e LOCAL_USER_ID={os.getuid()}"
+
+try:
+    pass_uid = f"-e LOCAL_USER_ID={os.getuid()}"
+except OSError:
+    pass_uid = ""
+
+docker_base = f"docker run --rm -v {root}/:{docker_subj_dir} {pass_uid}"
 
 
 if __name__ == "__main__":

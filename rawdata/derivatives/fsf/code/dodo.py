@@ -48,7 +48,7 @@ def task_pipeline():
                 f"{config.docker_base} -v {anat_dir}:/anat "
                 + f"{config.docker_tagged_image} "
                 + f"subject=sub-{subj} "
-                + f"recon_all_cmd='-i /anat/{anat_file} -all' --verbosity 2"
+                + f'recon_all_cmd="-i /anat/{anat_file} -all" --verbosity 2'
             ],
             targets=[config.root / f"sub-{subj}"],
         )
