@@ -1,7 +1,24 @@
-from config import src_dir, subjects, tmp_dicom_dir
+import zipfile
+
+import patoolib
 from doit.tools import run_once
 
+from config import src_dir, subjects, tmp_dicom_dir
+
 DOIT_CONFIG = {"sort": "definition"}
+
+
+def unzip(archive_path, dst_dir):
+    with zipfile.ZipFile(archive_path, "r") as zip_ref:
+        zip_ref.extractall(dst_dir)
+
+
+def unrar(archive_path, dst_dir):
+    patoolib.extract_archive(archive_path, outdir=dst_dir)
+
+
+def mkdir(dirpath):
+    dirpath.mkdir(exist_ok=True, parents=True)
 
 
 def task_unarchive():
@@ -16,11 +33,11 @@ def task_unarchive():
             targets=[dst_dir],
             uptodate=[run_once],
         )
-        targ["actions"] = [f"mkdir -p {dst_dir}"]
+        targ["actions"] = [(mkdir, [dst_dir])]  # pyright: ignore
         if path.name.endswith(".zip"):
-            targ["actions"].append(f"unzip {path} -d {dst_dir}")
+            targ["actions"].append((unzip, (path, dst_dir)))  # pyright: ignore
         elif path.name.endswith(".rar"):
-            targ["actions"].append(f"unrar x {path} {dst_dir}")
+            targ["actions"].append((unrar, (path, dst_dir)))  # pyright: ignore
         yield targ
 
 
