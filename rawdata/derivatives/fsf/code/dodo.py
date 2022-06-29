@@ -7,7 +7,6 @@ import config
 
 
 def create_dset_description():
-    fsf_version = os.popen("recon-all -version").read().strip()
     json_dict = {
         "Name": config.pipeline_name,
         "BidsVersion": config.bids_version,
@@ -17,7 +16,6 @@ def create_dset_description():
             {
                 "Name": "MRI_metacognition",
                 "CodeUrl": config.code_url,
-                "Version": fsf_version,
                 "Container": {
                     "Type": "docker",
                     "Tag": config.docker_tagged_image,

@@ -12,8 +12,8 @@ subjects = [s for s in all_subjects if s not in bad_subjects]
 
 pipeline_name = "fsf"
 bids_version = "1.6.0"
-authors = ["Dmitrii Altukhov"]
-code_url = "https://github.com/dmalt/MRI_metacognition/blob/main/dodo.py"
+authors = ["Dmitrii Altukhov", "Maria Alekseeva", "Beatriz Martin-Luengo"]
+code_url = "https://github.com/dmalt/MRI_metacognition/blob/main/rawdata/code/dodo.py"
 
 docker_subj_dir = "/subjects"
 docker_image = "dmalt/freesurfer"
