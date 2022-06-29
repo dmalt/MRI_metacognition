@@ -1,4 +1,6 @@
 import zipfile
+from pathlib import Path
+from shutil import copyfile, rmtree
 
 import patoolib
 from doit.tools import run_once
@@ -17,8 +19,8 @@ def unrar(archive_path, dst_dir):
     patoolib.extract_archive(archive_path, outdir=dst_dir)
 
 
-def mkdir(dirpath):
-    dirpath.mkdir(exist_ok=True, parents=True)
+def mkdir(dirname):
+    Path(dirname).mkdir(exist_ok=True, parents=True)
 
 
 def task_unarchive():
@@ -56,9 +58,15 @@ def task_convert():
             clean=True,
         )
         if s == "38":
-            task_dict["actions"] = [
-                f"mkdir -p ../sub-{s}/anat",
-                f"cp {tmp_dicom_dir}/sub-{s}/*/*.nii.gz ../sub-{s}/anat/sub-{s}_T1w.nii.gz",
+            task_dict["actions"] = [  # pyright: ignore
+                (mkdir, [f"../sub-{s}/anat"]),
+                (
+                    copyfile,
+                    [
+                        tmp_dicom_dir / f"sub-{s}/solev_ivan/3_3d_sag_t1_cube.nii.gz",
+                        f"../sub-{s}/anat/sub-{s}_T1w.nii.gz",
+                    ],
+                ),
             ]
         elif s == "23":
             task_dict["actions"] = [
@@ -78,7 +86,7 @@ def task_clean_tmp_folders():
     """Remove temporary folders"""
     return dict(
         task_dep=["convert"],
-        actions=[f"rm -rf {tmp_dicom_dir}", "rm -rf ../tmp_dcm2bids"],
+        actions=[(rmtree, [f"{tmp_dicom_dir}"]), (rmtree, ["../tmp_dcm2bids"])],
     )
 
 
