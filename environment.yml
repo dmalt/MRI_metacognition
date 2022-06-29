@@ -8,4 +8,3 @@ dependencies:
   - dcm2niix
   - dcm2bids
   - doit
-  - unzip
