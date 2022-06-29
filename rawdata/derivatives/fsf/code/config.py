@@ -23,7 +23,7 @@ docker_tagged_image = docker_image + ":" + docker_tag
 
 try:
     pass_uid = f"-e LOCAL_USER_ID={os.getuid()}"
-except OSError:
+except AttributeError:
     pass_uid = ""
 
 docker_base = f"docker run --rm -v {root}/:{docker_subj_dir} {pass_uid}"
