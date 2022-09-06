@@ -42,6 +42,7 @@ Requirements
 - anaconda\miniconda python installation
 - docker for freesurfer cortical reconstruction
 
+#### For adding new anatomies and converting to NIFTI format
 1. Download the code and change working directory to its root folder
 
     ```bash
@@ -70,10 +71,17 @@ Requirements
     conda env create -f environment.yml
     ```
 
+#### For computing Freesurfer cortical tesselations
 3. Install docker
+4. Create licensed docker container based on [this
+   repository](https://github.com/dmalt/freesurfer_public)
+5. Modify the `docker_image` variable at `rawdata/derivatives/fsf/code/config.py`
+    to comply with the name of your licensed docker container
 
 Launch
 ------
+
+#### For adding new anatomies and converting to NIFTI format
 1. Get the data with
     ```bash
     dvc pull
@@ -87,7 +95,14 @@ Launch
     ```bash
     doit
     ```
+#### For computing Freesurfer cortical tesselations
+**N.B.** Make sure you've adjusted the contents of `rawdata/derivatives/fsf/code/config.py`
+to the name of your licensed docker container, as instructed above.
 
+To run the freesurfer pipeline, change current directory to `rawdata/derivatives/fsf/code/` and run
+```bash
+doit
+```
 Adding new subjects
 -------------------
 To add a new subject, place the anatomy archive to `../../sourcedata/sub-<subject_id>/anat`

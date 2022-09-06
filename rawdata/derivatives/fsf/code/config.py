@@ -16,9 +16,9 @@ authors = ["Dmitrii Altukhov", "Maria Alekseeva", "Beatriz Martin-Luengo"]
 code_url = "https://github.com/dmalt/MRI_metacognition/blob/main/rawdata/code/dodo.py"
 
 docker_subj_dir = "/subjects"
-docker_image = "dmalt/freesurfer"
+docker_image = "dmalt/freesurfer"  # CHANGE THIS
 docker_tag = "7.1.1"
-docker_url = "https://hub.docker.com/repository/docker/dmalt/freesurfer"
+docker_url = "https://hub.docker.com/repository/docker/dmalt/freesurfer"  # AND THIS (OPTIONALLY)
 docker_tagged_image = docker_image + ":" + docker_tag
 
 try:

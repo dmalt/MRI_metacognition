@@ -1,9 +1,7 @@
 import json
-import os
-
-from doit.tools import run_once
 
 import config
+from doit.tools import run_once
 
 
 def create_dset_description():
